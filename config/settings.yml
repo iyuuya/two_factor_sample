@@ -1,0 +1,9 @@
+action_mailer:
+  perform_deliveries: true
+  delivery_method: :letter_opener_web
+  default_options:
+    from: '2FA sample <noreply@example.com>'
+  default_url_options:
+    host: 'example.com'
+    protocol: 'http'
+  smtp_settings: {}
