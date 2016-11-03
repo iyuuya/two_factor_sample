@@ -50,6 +50,6 @@ class User < ApplicationRecord
   end
 
   def self.otp_allowed_drift
-    Settings.devise.two_factor.allowed_drift.to_i.minutes
+    Settings.devise.two_factor.allowed_drift.minutes.to_i
   end
 end
