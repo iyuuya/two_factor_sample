@@ -7,3 +7,8 @@ action_mailer:
     host: 'example.com'
     protocol: 'http'
   smtp_settings: {}
+
+devise:
+  two_factor:
+    encrypt_key: 095777c20c14b01be8971c78cf830979d51cc8916f60fa58bc8ed0215b6fdefc8f26fa5b13f4771e792dd415a8fb05af34ce5c0aba433305b89e32d97069e836
+    allowed_drift: 5

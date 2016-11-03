@@ -9,6 +9,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= link_to 'Home', root_path %> /
+      <%= link_to 'Groups', groups_path %>
+    </div>
+    <hr>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

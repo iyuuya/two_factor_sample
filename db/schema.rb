@@ -10,13 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103073103) do
+ActiveRecord::Schema.define(version: 20161103074055) do
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "グループ" do |t|
     t.string   "name",            null: false
     t.boolean  "two_factor_auth", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "ユーザー" do |t|
+    t.string   "email",                     default: "", null: false
+    t.string   "encrypted_password",        default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",             default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.integer  "group_id",                               null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "encrypted_otp_secret"
+    t.string   "encrypted_otp_secret_iv"
+    t.string   "encrypted_otp_secret_salt"
+    t.integer  "consumed_timestep"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["group_id"], name: "index_users_on_group_id", using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end

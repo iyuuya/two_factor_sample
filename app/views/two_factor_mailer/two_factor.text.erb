@@ -1,0 +1,7 @@
+hi <%= @user.email %> !
+
+次のコードを入力してログインしてください。
+
+<%= @user.current_otp %>
+
+このコードは<%= Settings.devise.two_factor.allowed_drift %>分間有効です。
