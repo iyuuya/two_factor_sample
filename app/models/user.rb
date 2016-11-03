@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
   before_validation do
     if otp_required_for_login
-      user.otp_secret ||= User.generate_otp_secret(32)
+      self.otp_secret ||= User.generate_otp_secret(32)
     end
   end
 
