@@ -25,6 +25,7 @@ class Users::SessionsController < Devise::SessionsController
     if user_params[:email]
       # パスワードを確認
       if user.valid_password?(user_params[:password])
+        TwoFactorMailer.two_factor(user).deliver_now
         # ユーザーIDをセッションに保存して、認証コード入力画面をレンダリング
         session[:otp_user_id] = user.id
         render :two_factor and return

@@ -39,7 +39,17 @@ class User < ApplicationRecord
   devise :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_validation do
+    if otp_required_for_login
+      user.otp_secret ||= User.generate_otp_secret(32)
+    end
+  end
+
   def otp_required_for_login
     group.two_factor_auth
+  end
+
+  def self.otp_allowed_drift
+    Settings.devise.two_factor.allowed_drift.to_i.minutes
   end
 end
