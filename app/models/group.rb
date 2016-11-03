@@ -10,4 +10,6 @@
 #
 
 class Group < ApplicationRecord
+  validates :name, presence: true
+  validates :two_factor_auth, inclusion: { in: [true, false] }
 end
