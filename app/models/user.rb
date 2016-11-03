@@ -29,6 +29,8 @@
 #
 
 class User < ApplicationRecord
+  belongs_to :group
+
   devise :two_factor_authenticatable,
          :otp_secret_encryption_key => Settings.devise.two_factor.encrypt_key
 
