@@ -1,0 +1,23 @@
+<h2>Enter new password</h2>
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name)) do |f| %>
+  <%= f.hidden_field :confirmation_token %>
+
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>

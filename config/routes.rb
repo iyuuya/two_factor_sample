@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+  devise_scope :user do
+    patch "users/confirmation", to: "users/confirmations#confirm"
+  end
   resources :groups
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #

@@ -49,11 +49,22 @@ class User < ApplicationRecord
     end
   end
 
+  def self.otp_allowed_drift
+    Settings.devise.two_factor.allowed_drift.minutes.to_i
+  end
+
   def otp_required_for_login
     group.two_factor_auth
   end
 
-  def self.otp_allowed_drift
-    Settings.devise.two_factor.allowed_drift.minutes.to_i
+  def password_required?
+    super if confirmed?
+  end
+
+  def password_match?
+    self.errors[:password] << "can't be blank" if password.blank?
+    self.errors[:password_confirmation] << "can't be blank" if password_confirmation.blank?
+    self.errors[:password_confirmation] << "does not match password" if password != password_confirmation
+    password == password_confirmation && !password.blank?
   end
 end
