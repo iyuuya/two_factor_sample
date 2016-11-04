@@ -1,0 +1,20 @@
+<%= form_for resource, url: registration_path(resource_name) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.hidden_field :email %>
+    <%= resource.email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :group %>
+    <%= f.hidden_field :group_id %>
+    <%= resource.group.name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+
+<% end %>
+
